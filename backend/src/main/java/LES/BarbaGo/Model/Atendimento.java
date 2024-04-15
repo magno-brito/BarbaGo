@@ -1,4 +1,4 @@
-package Model;
+package LES.BarbaGo.Model;
 
 import java.util.HashSet;
 import java.util.Set;

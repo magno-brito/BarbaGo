@@ -1,4 +1,4 @@
-package Model;
+package LES.BarbaGo.Model;
 
 
 import lombok.Getter;
