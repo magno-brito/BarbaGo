@@ -11,8 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "pessoa")
+
 @Getter
 @Setter
 @NoArgsConstructor

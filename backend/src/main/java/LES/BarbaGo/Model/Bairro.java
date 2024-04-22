@@ -1,22 +1,27 @@
 package LES.BarbaGo.Model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "bairro")
+@Table(name="bairro")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Bairro {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
+
+    @ManyToOne
+    @JoinColumn(name="cidade")
     private Cidade cidade;
+    @ManyToOne
+    @JoinColumn(name="uf")
     private UF uf;
 
     public Bairro( String nome, Cidade cidade, UF uf) {
