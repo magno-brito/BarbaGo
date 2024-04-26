@@ -1,13 +1,20 @@
 package LES.BarbaGo.Model;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
+@Table(name="multa")
 @Getter
 @Setter
 
 public class Multa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToOne
     private Agendamento agendamento;
     private Float valor;
 

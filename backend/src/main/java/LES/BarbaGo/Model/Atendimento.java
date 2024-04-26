@@ -1,12 +1,27 @@
 package LES.BarbaGo.Model;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Atendimento {
+@Entity
+@Table(name="atendimento")
+@Getter
+@Setter
 
-    private Set servicos;
+public class Atendimento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToMany
+    @JoinColumn(name="atendimento_id")
+    private Set<Servicos> servicos;
     private Float preco;
+
+    @OneToOne
     private Agendamento agendamento;
 
     public Atendimento(HashSet servicos, Float preco, Agendamento agendamento) {
@@ -17,28 +32,5 @@ public class Atendimento {
     }
 
 
-    public Set getServicos() {
-        return this.servicos;
-    }
-
-    public void setServicos(Set servicos) {
-        this.servicos = servicos;
-    }
-
-    public Float getPreco() {
-        return this.preco;
-    }
-
-    public void setPreco(Float preco) {
-        this.preco = preco;
-    }
-
-    public Agendamento getAgendamento() {
-        return this.agendamento;
-    }
-
-    public void setAgendamento(Agendamento agendamento) {
-        this.agendamento = agendamento;
-    }
 
 }

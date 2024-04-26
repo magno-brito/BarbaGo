@@ -1,17 +1,20 @@
 package LES.BarbaGo.Model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Entity
+@Table(name="barbeiro")
 @Getter
 @Setter
 public class Barbeiro extends  Pessoa{
-    private Set servicos;
+    @OneToMany
+    @JoinColumn(name="barbeiro_id")
+    private Set<Servicos> servicos;
 
     public Barbeiro(String nome, String email, String senha, Bairro bairro){
         super(nome, email, senha, bairro);
