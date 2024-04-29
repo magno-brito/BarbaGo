@@ -17,6 +17,9 @@ import lombok.Setter;
 public class UF {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nome;
 
     public UF(String nome) {
