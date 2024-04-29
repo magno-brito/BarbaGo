@@ -29,18 +29,17 @@ public class UsuarioController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-
     public List<Usuario> listaUsuario() {
         return usuarioService.listaUsuarios();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Usuario buscarPorId(@PathVariable("id") Long id) {
         return usuarioService.buscarPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerPorId(@PathVariable("id") Long id) {
         usuarioService.buscarPorId(id).map(

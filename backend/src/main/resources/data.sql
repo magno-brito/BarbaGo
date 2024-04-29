@@ -1,8 +1,32 @@
 -- Creating states
+INSERT INTO UF (nome) VALUES ('AC');
+INSERT INTO UF (nome) VALUES ('AL');
+INSERT INTO UF (nome) VALUES ('AP');
+INSERT INTO UF (nome) VALUES ('AM');
+INSERT INTO UF (nome) VALUES ('BA');
+INSERT INTO UF (nome) VALUES ('CE');
+INSERT INTO UF (nome) VALUES ('DF');
 INSERT INTO UF (nome) VALUES ('ES');
+INSERT INTO UF (nome) VALUES ('GO');
+INSERT INTO UF (nome) VALUES ('MA');
+INSERT INTO UF (nome) VALUES ('MT');
+INSERT INTO UF (nome) VALUES ('MS');
 INSERT INTO UF (nome) VALUES ('MG');
-INSERT INTO UF (nome) VALUES ('SP');
+INSERT INTO UF (nome) VALUES ('PA');
+INSERT INTO UF (nome) VALUES ('PB');
+INSERT INTO UF (nome) VALUES ('PR');
+INSERT INTO UF (nome) VALUES ('PE');
+INSERT INTO UF (nome) VALUES ('PI');
 INSERT INTO UF (nome) VALUES ('RJ');
+INSERT INTO UF (nome) VALUES ('RN');
+INSERT INTO UF (nome) VALUES ('RS');
+INSERT INTO UF (nome) VALUES ('RO');
+INSERT INTO UF (nome) VALUES ('RR');
+INSERT INTO UF (nome) VALUES ('SC');
+INSERT INTO UF (nome) VALUES ('SP');
+INSERT INTO UF (nome) VALUES ('SE');
+INSERT INTO UF (nome) VALUES ('TO');
+
 
 -- Creating cities
 INSERT INTO Cidade (nome, UF) VALUES ('Vitória', 'ES');
