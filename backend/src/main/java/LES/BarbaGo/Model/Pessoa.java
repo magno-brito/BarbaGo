@@ -13,7 +13,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Pessoa {
 
     @Id
@@ -24,7 +23,8 @@ public class Pessoa {
     private String email;
     private String senha;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "bairro_id")
     private Bairro bairro;
 
     public Pessoa(String nome, String email, String senha, Bairro bairro) {
@@ -33,4 +33,5 @@ public class Pessoa {
         this.senha = senha;
         this.bairro = bairro;
     }
+
 }

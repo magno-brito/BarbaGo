@@ -2,6 +2,7 @@ package LES.BarbaGo.Model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Calendar;
@@ -10,6 +11,7 @@ import java.util.Calendar;
 @Table(name="agendamento")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

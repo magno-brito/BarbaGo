@@ -20,14 +20,11 @@ public class Bairro {
     @ManyToOne
     @JoinColumn(name="cidade")
     private Cidade cidade;
-    @ManyToOne
-    @JoinColumn(name="uf")
-    private UF uf;
 
-    public Bairro( String nome, Cidade cidade, UF uf) {
+
+    public Bairro( String nome, Cidade cidade) {
         this.nome = nome;
         this.cidade = cidade;
-        this.uf = uf;
     }
 
 }

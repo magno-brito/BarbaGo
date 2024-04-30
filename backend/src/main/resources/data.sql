@@ -27,30 +27,30 @@ INSERT INTO UF (nome) VALUES ('SP');
 INSERT INTO UF (nome) VALUES ('SE');
 INSERT INTO UF (nome) VALUES ('TO');
 
-INSERT INTO Cidade (nome, id)
-VALUES ('Vitória', (SELECT id FROM UF WHERE nome = 'ES'));
+INSERT INTO Cidade (nome, uf)
+VALUES ('Vitória', (SELECT id FROM UF WHERE nome='ES'));
 
-INSERT INTO Cidade (nome, id)
+INSERT INTO Cidade (nome, uf)
 VALUES ('Belo Horizonte', (SELECT id FROM UF WHERE nome = 'MG'));
 
-INSERT INTO Cidade (nome, id)
+INSERT INTO Cidade (nome, uf)
 VALUES ('São Paulo', (SELECT id FROM UF WHERE nome = 'SP'));
 
-INSERT INTO Cidade (nome, id)
+INSERT INTO Cidade (nome, uf)
 VALUES ('Rio de Janeiro', (SELECT id FROM UF WHERE nome = 'RJ'));
 
 -- Creating neighborhoods with correct city references
-INSERT INTO Bairro (nome, id)
-VALUES ('Jardim Camburi', (SELECT id FROM Cidade WHERE nome = 'Vitória' AND id = (SELECT id FROM UF WHERE nome = 'ES')));
+INSERT INTO Bairro (nome, cidade)
+VALUES ('Jardim Camburi', (SELECT id FROM Cidade WHERE nome = 'Vitória'));
 
-INSERT INTO Bairro (nome, id)
-VALUES ('Savassi', (SELECT id FROM Cidade WHERE nome = 'Belo Horizonte' AND id = (SELECT id FROM UF WHERE nome = 'MG')));
+INSERT INTO Bairro (nome, cidade)
+VALUES ('Savassi', (SELECT id FROM Cidade WHERE nome = 'Belo Horizonte' ));
 
-INSERT INTO Bairro (nome, id)
-VALUES ('Jardins', (SELECT id FROM Cidade WHERE nome = 'São Paulo' AND id = (SELECT id FROM UF WHERE nome = 'SP')));
+INSERT INTO Bairro (nome, cidade)
+VALUES ('Jardins', (SELECT id FROM Cidade WHERE nome = 'São Paulo' ));
 
-INSERT INTO Bairro (nome, id)
-VALUES ('Copacabana', (SELECT id FROM Cidade WHERE nome = 'Rio de Janeiro' AND id = (SELECT id FROM UF WHERE nome = 'RJ')));
+INSERT INTO Bairro (nome, cidade)
+VALUES ('Copacabana', (SELECT id FROM Cidade WHERE nome = 'Rio de Janeiro' ));
 
 -- Adding services
 INSERT INTO servicos (nome, valor) VALUES ('Corte de Cabelo', 30.00);
@@ -59,19 +59,19 @@ INSERT INTO servicos (nome, valor) VALUES ('Corte e Barba', 45.00);
 INSERT INTO servicos (nome, valor) VALUES ('Hidratação Capilar', 50.00);
 
 -- Creating people and assigning neighborhoods
-INSERT INTO Pessoa (nome, email, senha, id)
+INSERT INTO Pessoa (nome, email, senha, bairro_id)
 VALUES ('Carlos Silva', 'carlos.silva@example.com', 'senha123',
        (SELECT id FROM Bairro WHERE nome = 'Jardim Camburi'));
 
-INSERT INTO Pessoa (nome, email, senha, id)
+INSERT INTO Pessoa (nome, email, senha, bairro_id)
 VALUES ('Ana Souza', 'ana.souza@example.com', 'minhasenha',
-       (SELECT id FROM Bairro WHERE nome = 'Savassi'));
+       (SELECT id FROM Bairro WHERE nome = 'Jardim Camburi'));
 
-INSERT INTO Pessoa (nome, email, senha, id)
+INSERT INTO Pessoa (nome, email, senha, bairro_id)
 VALUES ('Pedro Lima', 'pedro.lima@example.com', '123456',
        (SELECT id FROM Bairro WHERE nome = 'Jardins'));
 
-INSERT INTO Pessoa (nome, email, senha, id)
+INSERT INTO Pessoa (nome, email, senha, bairro_id)
 VALUES ('Mariana Castro', 'mariana.castro@example.com', 'castro123',
        (SELECT id FROM Bairro WHERE nome = 'Copacabana'));
 -- Creating users and barbers from people
