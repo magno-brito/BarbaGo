@@ -1,8 +1,6 @@
 package LES.BarbaGo.Model;
 
-import LES.BarbaGo.Model.Bairro;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,15 +21,14 @@ public class Pessoa {
     private String email;
     private String senha;
 
-    @ManyToOne
-    @JoinColumn(name = "bairro_id")
-    private Bairro bairro;
+    // @ManyToOne
+    // @JoinColumn(name = "bairro_id")
+    // private Bairro bairro;
 
-    public Pessoa(String nome, String email, String senha, Bairro bairro) {
+    public Pessoa(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.bairro = bairro;
     }
 
 }

@@ -13,7 +13,8 @@ import { useToast } from "../../hooks/toast";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import useAuth from "../../hooks/auth";
+
+import { AxiosError } from 'axios';
 
 interface ISignUpFormData {
   name: string;
@@ -41,26 +42,33 @@ const SignUp: React.FC = () => {
 
   const onSubmit = async (data: ISignUpFormData) => {
     try{
-      await api.post('users',{
-        name: data.name,
+
+      console.log(data)
+      
+      await api.post('usuario',
+      {
+        nome: data.name,
         email: data.email,
-        password: data.password
+        senha: data.password
       });
-    } catch(error) {
+
+      addToast({
+        type: 'success',
+        title: 'Cadastro realizado',
+        description: 'Você já pode fazer seu login'
+      });
+
+      navigate('/');
+
+    } catch (error) {
       addToast({
         type: 'error',
-        title: 'Erro no Cadastro',
-        description: 'Ocorreu um erro ao fazer cadastro, cheque as credenciais'
+        title: 'E-mail já cadastrado',
+        description: 'Tente novamente!'
       });
-    }
-  
-    addToast({
-      type: 'success',
-      title: 'Cadastro realizado',
-      description: 'Você já pode fazer seu login'
-    });
 
-    navigate('/');
+      console.log("Error: ", error);
+    }
   };
 
   return (

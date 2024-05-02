@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import { PrivateRoute } from "./Router";
 
 import { SignIn } from "../pages/SingIn";
+import { SignUp } from "../pages/SingUp";
 
 
 export const Routers: React.FC = () => {
@@ -13,6 +14,12 @@ export const Routers: React.FC = () => {
         <PrivateRoute redirectTo="dashboard">
           <SignIn />
         </PrivateRoute>} />
+
+        <Route path="/signup" element={
+        <PrivateRoute redirectTo="/">
+          <SignUp />
+        </PrivateRoute>} />
     </Routes>
+    
   );
 };

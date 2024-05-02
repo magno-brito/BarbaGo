@@ -23,7 +23,7 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario salvar(Usuario usuario) {
+    public Usuario salvar(@RequestBody Usuario usuario) {
         return usuarioService.salvar(usuario);
     }
 
@@ -49,9 +49,5 @@ public class UsuarioController {
                 }
         ).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-
-//    public void atualizarUsuario(Long id, Usuario usuario) {
-//        usuarioService.buscarPorId(id).map(usuario1 ->  )
-//    }
 
 }

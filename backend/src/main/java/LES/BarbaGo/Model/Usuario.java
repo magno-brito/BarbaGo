@@ -2,7 +2,6 @@ package LES.BarbaGo.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Usuario extends Pessoa {
-    public Usuario(String nome, String email, String senha, Bairro bairro) {
-        super(nome, email, senha, bairro);
+    public Usuario(String nome, String email, String senha) {
+        super(nome, email, senha);
     }
 }

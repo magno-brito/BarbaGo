@@ -18,8 +18,8 @@ public class Barbeiro extends  Pessoa{
     @JoinColumn(name="barbeiro_id")
     private Set<Servicos> servicos;
 
-    public Barbeiro(String nome, String email, String senha, Bairro bairro){
-        super(nome, email, senha, bairro);
+    public Barbeiro(String nome, String email, String senha){
+        super(nome, email, senha);
         servicos = new HashSet<Servicos>();
     }
 
