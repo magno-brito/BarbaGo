@@ -15,11 +15,13 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private EmailVerificationService emailVerificationService;
+
     @Transactional
     public Usuario salvar(Usuario usuario) {
-        Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());
-        if (usuarioExistente.isPresent()) {
-            throw new IllegalStateException("Já existe um usuário cadastrado com esse e-mail.");
+        if (emailVerificationService.emailExists(usuario.getEmail())) {
+            throw new RuntimeException("Email já está em uso.");
         }
         return usuarioRepository.save(usuario);
     }

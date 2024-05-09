@@ -1,7 +1,11 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { shade } from 'polished';
 
 import SignUpBackground from '../../assets/sign-up-background.jpg';
+
+interface TypeButtonProps {
+  selected: boolean;
+}
 
 export const Container = styled.div`
   height: 100vh;
@@ -9,6 +13,7 @@ export const Container = styled.div`
   display: flex;
   align-items: stretch;
 `;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +36,6 @@ const appearFromRight = keyframes`
     transform: translateX(0);
   }
 `;
-
 
 export const AnimationContainer = styled.div`
   display: flex;
@@ -84,9 +88,31 @@ export const AnimationContainer = styled.div`
   }
 `;
 
-
 export const Background = styled.div`
   flex: 1;
   background: url(${SignUpBackground}) no-repeat center;
   background-size: cover;
 `; 
+
+export const TypeButton = styled.button<TypeButtonProps>`
+  padding: 6px 4px;
+  margin-right: 20px;
+  background: transparent; 
+  color: #333;  
+  cursor: pointer;
+  border: none; 
+  border-bottom: 3px solid transparent;
+
+  transition: all 0.3s ease;  
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;  
+  }
+
+  ${props => props.selected && css`
+    color: #F4EDE8;  
+    border-bottom: 3px solid #BB86FC; 
+  `} 
+`;

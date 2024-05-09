@@ -16,7 +16,13 @@ public class BarbeiroService {
     @Autowired
     private BarbeiroRepository barbeiroRepository;
 
+    @Autowired
+    private EmailVerificationService emailVerificationService;
+
     public Barbeiro salvar(Barbeiro barbeiro) {
+        if (emailVerificationService.emailExists(barbeiro.getEmail())) {
+            throw new RuntimeException("Email já está em uso.");
+        }
         return barbeiroRepository.save(barbeiro);
     }
 

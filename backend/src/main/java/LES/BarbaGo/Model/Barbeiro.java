@@ -1,3 +1,4 @@
+
 package LES.BarbaGo.Model;
 
 import jakarta.persistence.*;
@@ -13,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Barbeiro extends  Pessoa{
+public class Barbeiro extends Pessoa{
     @OneToMany
     @JoinColumn(name="barbeiro_id")
     private Set<Servicos> servicos;

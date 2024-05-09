@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/barbeiros")
+@RequestMapping("/barbeiro")
 public class BarbeiroController {
     @Autowired
     private BarbeiroService barbeiroService;
@@ -22,7 +22,10 @@ public class BarbeiroController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Barbeiro salvar(Barbeiro barbeiro) {
+    public Barbeiro salvar(@RequestBody Barbeiro barbeiro) {
+        System.out.println(barbeiro.getNome());
+        System.out.println(barbeiro.getEmail());
+        System.out.println(barbeiro.getSenha());
         return barbeiroService.salvar(barbeiro);
     }
 
