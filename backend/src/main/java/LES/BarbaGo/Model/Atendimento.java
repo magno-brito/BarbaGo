@@ -33,6 +33,4 @@ public class Atendimento {
         this.agendamento = agendamento;
     }
 
-
-
 }

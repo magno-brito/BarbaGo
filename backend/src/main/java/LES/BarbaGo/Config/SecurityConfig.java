@@ -23,8 +23,8 @@ public class SecurityConfig {
             .authorizeRequests()
                 .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated();
-            http.csrf().disable();
-            http.headers().frameOptions().disable();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
 
         return http.build();
     }

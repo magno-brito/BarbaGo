@@ -1,5 +1,10 @@
 package LES.BarbaGo.Model;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Pessoa {
+public class Pessoa{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +35,4 @@ public class Pessoa {
         this.email = email;
         this.senha = senha;
     }
-
 }
