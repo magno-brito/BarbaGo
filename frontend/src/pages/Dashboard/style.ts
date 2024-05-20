@@ -1,91 +1,37 @@
-import styled, { keyframes } from "styled-components";
-import { shade } from 'polished';
-
-import SignInBackground from '../../assets/sign-in-background.jpg';
+import { shade } from "polished";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
-
-  display: flex;
-  align-items: stretch;
 `;
 
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
+export const Header = styled.header`
+  padding: 32px 0;
+  background: #28262e;
+`;
 
-  justify-content: center;
+export const HeaderContainer = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
   align-items: center;
 
-  width: 100%;
-  max-width: 700px;
-
-`;
-
-const appearFromLeft = keyframes`
-  from{
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to{
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
-
-
-export const AnimationContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-  align-items: center;
-
-  animation: ${appearFromLeft} 1s;
-
-   form {
-    margin: 80px 0;
-    width: 340px;
-    text-align: center;
-
-    h1 {
-      margin-bottom: 24px;
-    }
-
-    a{
-      color: #F4EDE8;
-      display: block;
-      text-decoration: none;
-      margin-top: 24px;
-      transition: color 0.2s;
-      
-      &:hover {
-        color: ${shade(0.4, '#F4EDE8')};
-      }
-    }
+  > img {
+    height: 80px;
   }
 
-  > a {
-    color: #BB86FC;
-    display: block;
-    text-decoration: none;
-    margin-top: 24px;
-    transition: color 0.2s;
-
-    display: flex;
-    align-items: center;
-      
-    &:hover {
-      color: ${shade(0.4, '#BB86FC')};
-    }
+  button {
+    margin-left: auto;
+    background: transparent;
+    border: 0;
 
     svg{
-      margin: 1px 14px 0 0;
+      color: #999591;
+      width: 20px;
+      height: 20px;
     }
   }
 `;
 
-<<<<<<< HEAD
 export const Profile = styled.div`
   display: flex;
   align-items: center;
@@ -320,10 +266,3 @@ export const Calendar = styled.aside`
     color: #232129 !important;
   }
 `;
-=======
-export const Background = styled.div`
-  flex: 1;
-  background: url(${SignInBackground}) no-repeat center;
-  background-size: cover;
-`; 
->>>>>>> b232e55efd9046f02b83460e303f1cb2f3e26f44
