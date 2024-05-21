@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { DayClickEventHandler, Modifiers } from 'react-day-picker';
 import { isToday, format, parseISO, isAfter } from 'date-fns';
+import "react-datepicker/dist/react-datepicker.css";
 
 import { DayPicker } from 'react-day-picker';
+import DatePicker from "react-datepicker";
 
 import { Container, Header, HeaderContainer, Profile, Content, Schedule, Calendar, NextAppointment, Section, Appointment } from "./style";
 
@@ -33,16 +35,17 @@ interface Modifiers {
 }
 
 export const Dashboard: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate1, setSelectedDate1] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [monthAvailability, setMonthAvailability] = useState<IMonthAvailability[]>([]);
   const [appointments, setAppointments] = useState<IAppointments[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const { signOut, user } = useAuth();
 
   const handleDateChange = useCallback((day: Date, modifiers: Modifiers) => {
     if (modifiers.available && !modifiers.disabled) {
-      setSelectedDate(day);
+      setSelectedDate1(day);
     }
   }, []);
 
@@ -96,12 +99,12 @@ export const Dashboard: React.FC = () => {
   }, [currentMonth, monthAvailability]);
 
   const seletedDateAsText = useMemo(() => {
-    return format(selectedDate, "'Dia' dd 'de' MMMM")
-  }, [selectedDate])
+    return format(selectedDate1, "'Dia' dd 'de' MMMM")
+  }, [selectedDate1])
 
   const seletedWeekDay = useMemo(() => {
-    return format(selectedDate, 'cccc')
-  }, [selectedDate])
+    return format(selectedDate1, 'cccc')
+  }, [selectedDate1])
 
   const morningAppointments = useMemo(() => {
     return appointments.filter(appointment => {
@@ -130,7 +133,7 @@ export const Dashboard: React.FC = () => {
             <div>
               <span>Bem vindo</span>
               <Link to="/profile">
-                <strong>nOme</strong>
+                <strong>Nome</strong>
               </Link>
 
             </div>
@@ -146,12 +149,12 @@ export const Dashboard: React.FC = () => {
         <Schedule>
           <h1>Horarios agendados</h1>
           <p>
-            {isToday(selectedDate) && <span>Hoje</span>}
+            {isToday(selectedDate1) && <span>Hoje</span>}
             <span>{seletedDateAsText}</span>
             <span>{seletedWeekDay}</span>
           </p>
 
-          {isToday(selectedDate) && nextAppointment && (
+          {isToday(selectedDate1) && nextAppointment && (
             <NextAppointment>
               <strong>Agendamento a seguir</strong>
 
@@ -215,10 +218,11 @@ export const Dashboard: React.FC = () => {
               </Appointment>
             ))}
           </Section>
+          
 
         </Schedule>
 
-        <Calendar>
+        {/* <Calendar>
           <DayPicker
             weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
             disabledDays={[
@@ -231,23 +235,20 @@ export const Dashboard: React.FC = () => {
             onDayClick={handleDateChange}
             selectedDays={selectedDate}
             onMonthChange={handleMonthChange}
-            months={[
-              'Janeiro',
-              'Fevereiro',
-              'Março',
-              'Abril',
-              'Maio',
-              'Junho',
-              'Julho',
-              'Agosto',
-              'Setembro',
-              'Outubro',
-              'Novembro',
-              'Dezembro',
-            ]}
+            
             fromMonth={new Date()}
           />
-        </Calendar>
+        </Calendar> */}
+        
+       <Calendar>
+        
+        <DatePicker selected={selectedDate} onChange={(date: Date | null)=> setSelectedDate(date)}
+        inline/>
+       </Calendar>
+
+
+
+
       </Content>
     </Container>
   );
