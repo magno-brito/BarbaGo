@@ -13,6 +13,10 @@ import useAuth from "../../hooks/auth";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
 
+import { ptBR } from 'date-fns/locale';
+import { registerLocale } from 'react-datepicker';
+
+
 interface IMonthAvailability {
   day: number;
   available: boolean;
@@ -35,6 +39,7 @@ interface Modifiers {
 }
 
 export const Dashboard: React.FC = () => {
+  registerLocale('pt-BR', ptBR);
   const [selectedDate1, setSelectedDate1] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [monthAvailability, setMonthAvailability] = useState<IMonthAvailability[]>([]);
@@ -243,7 +248,17 @@ export const Dashboard: React.FC = () => {
        <Calendar>
         
         <DatePicker selected={selectedDate} onChange={(date: Date | null)=> setSelectedDate(date)}
-        inline/>
+        inline
+        locale="pt-BR"
+        />
+         <div>
+            {selectedDate ? (
+              <p>Teste:data escolida {format(selectedDate, 'MMMM d, yyyy', { locale: ptBR })}</p>
+            ) : (
+              <p>No date selected</p>
+            )}
+          </div>
+
        </Calendar>
 
 
