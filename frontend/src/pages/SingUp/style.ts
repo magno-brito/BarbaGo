@@ -116,3 +116,19 @@ export const TypeButton = styled.button<TypeButtonProps>`
     border-bottom: 3px solid #BB86FC; 
   `} 
 `;
+
+export const LogoContainer = styled.div`
+  width: 250px;
+  margin-top:25%;
+  margin-bottom:80px;
+  margin-left:40px;
+  background-color: white;
+  
+`; 
+
+export const Hr = styled.div`
+  border: none;
+  height: 2px;
+  background-color: #BB86FC;
+`; 
+

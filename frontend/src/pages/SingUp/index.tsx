@@ -14,7 +14,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
+import LogoBarba from '../../assets/logo.svg';
+
+
 import { AxiosError } from 'axios';
+import { Hr, LogoContainer } from "../SingUp/style";
 
 interface ISignUpFormData {
   name: string;
@@ -69,6 +73,12 @@ const SignUp: React.FC = () => {
       <Content>
         <AnimationContainer>
           <form onSubmit={handleSubmit(onSubmit)}>
+          <LogoContainer>
+            <Hr></Hr>
+            <img src={LogoBarba} alt="Logo" style={{ width: '250px', marginBottom: '-4px' }} /> {/* Add logo image */}
+            <Hr></Hr>
+            </LogoContainer>
+
             <h1>Faça seu cadastro</h1>
             
             <div style={{ marginBottom: 20 }}>

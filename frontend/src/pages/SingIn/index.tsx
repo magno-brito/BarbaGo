@@ -5,7 +5,12 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
 import useAuth from "../../hooks/auth";
-import { Container, Content, AnimationContainer, Background } from "./style";
+import { Container, Content, AnimationContainer, Background, LogoContainer, Hr } from "./style";
+
+import LogoBarba from '../../assets/logo.svg';
+import SignUpBackground from '../../assets/sign-up-background.jpg';
+
+
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -56,6 +61,16 @@ const SignIn = () => {
         <AnimationContainer>
 
           <form onSubmit={handleSubmit(onSubmit)}>
+
+            <LogoContainer>
+            <Hr></Hr>
+            <img src={LogoBarba} alt="Logo" style={{ width: '350px', marginBottom: '-4px' }} /> {/* Add logo image */}
+            <Hr></Hr>
+            </LogoContainer>
+
+            
+
+
             <h1>Faça seu login</h1>
 
             <Input name="email" icon={FiMail} placeholder="E-mail" register={register} error={errors.email?.message} />

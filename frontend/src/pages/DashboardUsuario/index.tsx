@@ -6,12 +6,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { DayPicker } from 'react-day-picker';
 import DatePicker from "react-datepicker";
 
-import { Container, Header, HeaderContainer, Profile, Content, Schedule, Calendar, NextAppointment, Section, Appointment } from "./style";
+import { Container, Header, HeaderContainer, Profile, Content, Schedule, Calendar, NextAppointment, Section, Appointment, LogoContainer, Hr } from "./style";
 
 import { FiClock, FiPower } from "react-icons/fi";
 import useAuth from "../../hooks/auth";
 import api from "../../services/api";
 import { Link } from "react-router-dom";
+
+import LogoBarba2 from '../../assets/logo2.svg';
 
 import { ptBR } from 'date-fns/locale';
 import { registerLocale } from 'react-datepicker';
@@ -38,7 +40,7 @@ interface Modifiers {
     [otherKey: string]: boolean | undefined;
 }
 
-export const Dashboard: React.FC = () => {
+export const DashboardUsuario: React.FC = () => {
   registerLocale('pt-BR', ptBR);
   const [selectedDate1, setSelectedDate1] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -58,39 +60,6 @@ export const Dashboard: React.FC = () => {
     setCurrentMonth(month);
   }, []);
 
-//   useEffect(() => {
-//     api.get(`/providers/${user.id}/month-availability`, {
-//       params: {
-//         year: currentMonth.getFullYear(),
-//         month: currentMonth.getMonth() + 1
-//       }
-//     }).then(response => {
-//       setMonthAvailability(response.data);
-//     })
-//   }, [currentMonth, user.id]);
-
-//   useEffect(() => {
-//     api.get<IAppointments[]>('/appointments/me', {
-//       params: {
-//         year: selectedDate.getFullYear(),
-//         month: selectedDate.getMonth() + 1,
-//         day: selectedDate.getDate()
-//       }
-//     }).then(response => {
-//       const appointmentsFormatted = response.data.map(appointment => {
-//         return {
-//           ...appointment,
-//           hourFormatted: format(parseISO(appointment.date), 'HH:mm')
-//         }
-//       });
-
-//       const appoitmentsOrdem = appointmentsFormatted.sort((a, b) => {
-//         return parseISO(a.date).getTime() - parseISO(b.date).getTime()
-//       });
-
-//       setAppointments(appoitmentsOrdem);
-//     })
-//   }, [selectedDate]);
 
   const disabledDays = useMemo(() => {
     const dates = monthAvailability
@@ -104,11 +73,11 @@ export const Dashboard: React.FC = () => {
   }, [currentMonth, monthAvailability]);
 
   const seletedDateAsText = useMemo(() => {
-    return format(selectedDate1, "'Dia' dd 'de' MMMM")
+    return format(selectedDate1, "'Dia' dd 'de' MMMM", { locale: ptBR });
   }, [selectedDate1])
 
   const seletedWeekDay = useMemo(() => {
-    return format(selectedDate1, 'cccc')
+    return format(selectedDate1, 'cccc', { locale: ptBR });
   }, [selectedDate1])
 
   const morningAppointments = useMemo(() => {
@@ -133,10 +102,16 @@ export const Dashboard: React.FC = () => {
     <Container>
       <Header>
         <HeaderContainer>
+          
+        <LogoContainer>
+            <Hr></Hr>
+            <img src={LogoBarba2} alt="Logo" style={{ width: '150px', marginBottom: '-4px' }} /> {/* Add logo image */}
+            <Hr></Hr>
+        </LogoContainer>
 
           <Profile>
             <div>
-              <span>Bem vindo</span>
+              <span>Bem-vindo Usuário</span>
               <Link to="/profile">
                 <strong>Nome</strong>
               </Link>

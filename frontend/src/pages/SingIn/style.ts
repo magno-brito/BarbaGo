@@ -2,6 +2,8 @@ import styled, { keyframes } from "styled-components";
 import { shade } from 'polished';
 
 import SignInBackground from '../../assets/sign-in-background.jpg';
+import LogoBackGround from '../../assets/logo.svg';
+
 
 export const Container = styled.div`
   height: 100vh;
@@ -9,6 +11,7 @@ export const Container = styled.div`
   display: flex;
   align-items: stretch;
 `;
+
 
 export const Content = styled.div`
   display: flex;
@@ -89,4 +92,17 @@ export const Background = styled.div`
   flex: 1;
   background: url(${SignInBackground}) no-repeat center;
   background-size: cover;
+`; 
+
+export const LogoContainer = styled.div`
+  width: 350px;
+  margin-top:40px;
+  margin-bottom:80px;
+  background-color: white;
+`; 
+
+export const Hr = styled.div`
+  border: none;
+  height: 2px;
+  background-color: #BB86FC;
 `; 

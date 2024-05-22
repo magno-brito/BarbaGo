@@ -281,3 +281,16 @@ export const Calendar = styled.aside`
 }
 `;
 
+export const LogoContainer = styled.div`
+  width: 150px;
+  background-color: white;
+  
+`; 
+
+export const Hr = styled.div`
+  border: none;
+  height: 2px;
+  background-color: #BB86FC;
+`; 
+
+
