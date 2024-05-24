@@ -1,17 +1,11 @@
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { Link } from "react-router-dom";
-
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
-
 import useAuth from "../../hooks/auth";
 import { Container, Content, AnimationContainer, Background, LogoContainer, Hr } from "./style";
-
 import LogoBarba from '../../assets/logo.svg';
 import SignUpBackground from '../../assets/sign-up-background.jpg';
-
-
-
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -23,13 +17,13 @@ interface ISignDataForm {
   password: string;
 }
 
-const SignIn = () => {
+const Servicos = () => {
   const { signIn } = useAuth();
   const { addToast } = useToast();
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().required('E-mail é obrigatório').email('Digite um e-mail válido'),
-    password: Yup.string().required('Senha é obrigatória')
+    email: Yup.string().required('Nome é obrigatório').email('Digite um e-mail válido'),
+    password: Yup.string().required('Descrição é obrigatória')
   });
 
   const {
@@ -64,24 +58,20 @@ const SignIn = () => {
 
             <LogoContainer>
             <Hr></Hr>
-            <img src={LogoBarba} alt="Logo" style={{ width: '350px', marginBottom: '-4px' }} /> {/* Add logo image */}
+            <img src={LogoBarba} alt="Logo" style={{ width: '200px', marginBottom: '-4px' }} /> {/* Add logo image */}
             <Hr></Hr>
             </LogoContainer>
 
-            <h1>Faça seu login</h1>
+            <h1>Cadastrar Serviço</h1>
 
-            <Input name="email" icon={FiMail} placeholder="E-mail" register={register} error={errors.email?.message} />
-            <Input name="password" icon={FiLock} type="password" placeholder="Senha" register={register} error={errors.password?.message} />
+            <Input name="nome" icon={FiMail} placeholder="Nome" register={register} error={errors.email?.message} />
+            <Input name="descricao" icon={FiLock} type="text" placeholder="Descrição" register={register} error={errors.password?.message} />
+            <Input name="preco" icon={FiMail} placeholder="Preço" register={register} error={errors.email?.message} />
 
-            <Button type="submit">Entrar</Button>
-
-            <Link to="forgot-password">Esqueci minha senha</Link>
+            <Button type="submit">Cadastrar</Button>
           </form>
 
-          <Link to="/signup">
-            <FiLogIn />
-            Criar Conta
-          </Link>
+          
         </AnimationContainer>
       </Content>
       <Background />
@@ -89,4 +79,4 @@ const SignIn = () => {
   );
 };
 
-export { SignIn };
+export { Servicos };

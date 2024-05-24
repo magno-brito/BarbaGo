@@ -7,6 +7,7 @@ import { SignIn } from "../pages/SingIn";
 import { SignUp } from "../pages/SingUp";
 import { Dashboard } from "../pages/DashboardBarbeiro";
 import { DashboardUsuario } from "../pages/DashboardUsuario";
+import { Servicos } from "../pages/Servicos";
 
 
 
@@ -17,8 +18,8 @@ export const Routers: React.FC = () => {
         <PrivateRoute redirectTo="dashboard">
           <SignIn />
         </PrivateRoute>} />
-
         <Route path="/signup" element={
+
         <PrivateRoute redirectTo="/">
           <SignUp />
         </PrivateRoute>} />
@@ -27,10 +28,17 @@ export const Routers: React.FC = () => {
         <PrivateRoute redirectTo="/">
           <Dashboard />
         </PrivateRoute>} />
+
         <Route path="/dashboard/usuario" element={
         <PrivateRoute redirectTo="/">
           <DashboardUsuario />
         </PrivateRoute>} />
+
+        <Route path="/servicos" element={
+        <PrivateRoute redirectTo="/">
+          <Servicos />
+        </PrivateRoute>} />
+
     </Routes>
     
   );
